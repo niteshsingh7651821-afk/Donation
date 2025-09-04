@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Raj Singh - Kidney Transplant Fund</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f7ff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1a75ff 0%, #005ce6 100%);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .goal-container {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .progress-bar {
+            height: 30px;
+            background: #e6e6e6;
+            border-radius: 15px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #00cc00 0%, #00b300 100%);
+            border-radius: 15px;
+            width: 30%;
+            transition: width 1s ease-in-out;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 25px 0;
+        }
+        
+        .stat-box {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 10px;
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .stat-box h3 {
+            color: #1a75ff;
+            margin-bottom: 10px;
+        }
+        
+        .donors-container {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+        
+        .donor-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .donor-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .donor-item:last-child {
+            border-bottom: none;
+        }
+        
+        .donor-name {
+            font-weight: 600;
+            color: #1a75ff;
+        }
+        
+        .donor-amount {
+            font-weight: 700;
+            color: #00b300;
+        }
+        
+        .payment-options {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .payment-flex {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .qr-code {
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            margin: 10px;
+        }
+        
+        .qr-code img {
+            width: 180px;
+            height: 180px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        
+        .upi-details {
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            margin: 10px;
+            min-width: 250px;
+        }
+        
+        .patient-info {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .hospital-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .hospital-logo {
+            width: 80px;
+            height: 80px;
+            margin-right: 15px;
+            background: #1a75ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .payment-received {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+        
+        .payment-form {
+            display: flex;
+            flex-direction: column;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #1a75ff 0%, #005ce6 100%);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .paytm-info {
+            background: #002970;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .paytm-info h3 {
+            color: #00b9f5;
+            margin-bottom: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .payment-flex {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stats {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Help Raj Singh Get a Kidney Transplant</h1>
+            <p>Your donation can save a 23-year-old life</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="goal-container">
+            <h2>Donation Goal: ₹3,45,000</h2>
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+            <div class="stats">
+                <div class="stat-box">
+                    <h3>Raised</h3>
+                    <p class="raised-amount">₹61,001</p>
+                </div>
+                <div class="stat-box">
+                    <h3>Goal</h3>
+                    <p>₹3,45,000</p>
+                </div>
+                <div class="stat-box">
+                    <h3>Donors</h3>
+                    <p class="donors-count">14</p>
+                </div>
+            </div>
+            <p>Every contribution, no matter the size, brings us closer to our goal. Thank you for your support!</p>
+        </div>
+        
+        <div class="donors-container">
+            <h2>Recent Donors</h2>
+            <ul class="donor-list">
+                <li class="donor-item">
+                    <span class="donor-name">Rahul Singh</span>
+                    <span class="donor-amount">₹25,000</span>
+                </li>
+                <li class="donor-item">
+                    <span class="donor-name">Amit Kumar</span>
+                    <span class="donor-amount">₹14,001</span>
+                </li>
+                <li class="donor-item">
+                    <span class="donor-name">Aman Sharma</span>
+                    <span class="donor-amount">₹12,000</span>
+                </li>
+                <li class="donor-item">
+                    <span class="donor-name">Amit Singh</span>
+                    <span class="donor-amount">₹8,000</span>
+                </li>
+                <li class="donor-item">
+                    <span class="donor-name">Priya Patel</span>
+                    <span class="donor-amount">₹1,000</span>
+                </li>
+                <li class="donor-item">
+                    <span class="donor-name">Vikram Joshi</span>
+                    <span class="donor-amount">₹500</span>
+                </li>
+                <li class="donor-item">
+                    <span class="donor-name">Neha Gupta</span>
+                    <span class="donor-amount">₹500</span>
+                </li>
+                <li class="donor-item">
+                    <span class="donor-name">Sanjay Verma</span>
+                    <span class="donor-amount">₹1,000</span>
+                </li>
+                <li class="donor-item">
+                    <span class="donor-name">Anjali Mishra</span>
+                    <span class="donor-amount">₹500</span>
+                </li>
+                <li class="donor-item">
+                    <span class="donor-name">Rohit Yadav</span>
+                    <span class="donor-amount">₹1,000</span>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="payment-options">
+            <h2>Donate Now</h2>
+            <p>Scan the QR code or use the UPI ID below to make a donation</p>
+            
+            <div class="payment-flex">
+                <div class="qr-code">
+                    <h3>Scan QR Code</h3>
+                    <img src="/storage/emulated/0/Pictures/IMG_20250904_160115.jpg" alt="QR Code for Donation">
+                </div>
+                
+                <div class="upi-details">
+                    <h3>UPI Details</h3>
+                    <p><i class="fas fa-money-bill-wave"></i> UPI ID: <strong>paytmqr5k2vcx@ptys</strong></p>
+                    <p>You can use any UPI app (Google Pay, PhonePe, Paytm, etc.) to send your donation</p>
+                </div>
+            </div>
+            
+            
+        </div>
+        
+        <div class="payment-received">
+            <h2>Submit Your Payment Details</h2>
+            <p>After making a donation, please provide your details so we can acknowledge your contribution</p>
+            
+            <form class="payment-form" id="donation-form">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" placeholder="Enter your full name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="amount">Donation Amount (₹)</label>
+                    <input type="number" id="amount" placeholder="Enter amount" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number (optional)</label>
+                    <input type="tel" id="phone" placeholder="Enter your phone number">
+                </div>
+                
+                <button type="submit" class="submit-btn">Submit Donation Details</button>
+            </form>
+        </div>
+        
+        <div class="patient-info">
+            <h2>About Raj Singh</h2>
+            <p>Raj Singh is a 23-year-old student who has been diagnosed with end-stage renal disease and needs an urgent kidney transplant.</p>
+            
+            <div class="hospital-info">
+                <div class="hospital-logo">
+                    <i class="fas fa-hospital"></i>
+                </div>
+                <div>
+                    <h3>SGPGIMS Lucknow</h3>
+                    <p>Sanjay Gandhi Postgraduate Institute of Medical Sciences</p>
+                    <p>Raebareli Road, Lucknow, Uttar Pradesh 226014</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>This is a genuine request for help. All donations will go directly to Raj Singh's medical treatment.</p>
+            <p>For verification, please contact: SGPGIMS Lucknow - 0522-2490000</p>
+            <p>© 2023 Help Raj Singh | Privacy Policy</p>
+        </div>
+    </footer>
+
+    <script>
+        // Calculate and update progress bar
+        document.addEventListener('DOMContentLoaded', function() {
+            const raised = 61001;
+            const goal = 345000;
+            const progressPercent = (raised / goal) * 100;
+            document.getElementById('progress').style.width = `${progressPercent}%`;
+        });
+        
+        // Handle form submission
+        document.getElementById('donation-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const amount = document.getElementById('amount').value;
+            
+            if (name && amount) {
+                alert(`Thank you ${name} for your donation of ₹${amount}! Your support is greatly appreciated.`);
+                document.getElementById('donation-form').reset();
+                
+                // In a real application, you would send this data to a server
+                // and update the donor list and progress bar
+            }
+        });
+    </script>
+</body>
+</html>
